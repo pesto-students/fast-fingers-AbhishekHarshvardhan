@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import Header from '../Header';
 import UserInfo from '../UserInfo';
 import allWords from '../../data/dictionary.json';
+import Footer from '../Footer';
+import showTimeScore from '../utils/showTimeScore';
 
 const DIFFICULTY_LEVEL = {
   easy: 1,
@@ -10,18 +12,24 @@ const DIFFICULTY_LEVEL = {
   hard: 2,
 };
 
-const GameStart = () => {
+const GameStart = ({ getPlayerScores }) => {
   const history = useHistory();
 
   const [word, setWord] = useState('');
+  const [wordSpan, setWordSpan] = useState([]);
   const [timerValue, setTimerValue] = useState(null);
   const [score, setScore] = useState(0);
-
+  const playerHistory = getPlayerScores();
   const setNewWord = () => {
+    if (!history.location.state) return;
     const word = allWords[getRandomIntInclusive(1, 1700)];
-    const timer = word.length / DIFFICULTY_LEVEL.easy;
+    const wordSpan = word.split('').map((char) => [char, 'white']);
+    const timer = word.length / DIFFICULTY_LEVEL[history.location.state.level];
+    DIFFICULTY_LEVEL[history.location.state.level] =
+      DIFFICULTY_LEVEL[history.location.state.level] + 0.01;
     setWord(word);
-    setTimerValue(timer);
+    setWordSpan(wordSpan);
+    setTimerValue(timer > 2 ? timer.toFixed(0) : 2);
   };
 
   useEffect(() => {
@@ -32,30 +40,54 @@ const GameStart = () => {
   }, []);
 
   const onInputChange = (e) => {
-    if (e.currentTarget.value === word && timerValue > 0) {
+    let inputValue = e.currentTarget.value;
+    wordSpan.forEach((item, index) => {
+      if (inputValue[index] == null) {
+        item[1] = '#ffffff';
+      } else {
+        item[1] = inputValue[index] === item[0] ? '#54ba18' : '#445298';
+      }
+    });
+    if (inputValue === word && timerValue > 0) {
       e.currentTarget.value = '';
       setScore(score + timerValue);
       setNewWord();
     }
   };
-
-  setTimeout(() => {
-    if (timerValue) setTimerValue(timerValue - 1);
-    if (timerValue === 0)
-      history.push({
-        pathname: '/end',
-        state: {
-          score,
-          userName: history.location.state.userName,
-          level: history.location.state.level,
-        },
-      });
-  }, 1000);
+  const wordTimer = () => {
+    const wordTimeout = setTimeout(() => {
+      if (timerValue) setTimerValue(timerValue - 1);
+      if (timerValue === 0) stopGame();
+    }, 1000);
+    return () => clearTimeout(wordTimeout);
+  };
+  useEffect(wordTimer, [timerValue]);
 
   if (!history.location.state) {
     return null;
   }
-
+  const stopGame = () => {
+    const gameNo = playerHistory.length === 0 ? 1 : playerHistory.length + 1;
+    localStorage.setItem(
+      'userScore',
+      JSON.stringify([
+        ...playerHistory,
+        {
+          gameNo: gameNo,
+          score: score,
+        },
+      ])
+    );
+    history.push({
+      pathname: '/end',
+      state: {
+        gameNo,
+        score,
+        userName: history.location.state.userName,
+        level: history.location.state.level,
+      },
+    });
+  };
   return (
     <div>
       <div className='d-flex w-100'>
@@ -63,20 +95,36 @@ const GameStart = () => {
           userName={history.location.state.userName}
           level={history.location.state.level}
         />
-        <Header />
+        <Header textPlacement='right' />
       </div>
 
       <div className='d-flex w-100'>
         <div className='score'>
           <div className='Rectangle-10'>
             <div className='SCORE-BOARD'>Score board</div>
-            <div className='Game-1-114'>GAME 1: {score}</div>
+            {playerHistory.map(({ gameNo, score }) => (
+              <div className='Game-1-114' key={gameNo}>
+                GAME {gameNo} : {showTimeScore(score)}
+              </div>
+            ))}
+            <div className='Game-1-114' key={playerHistory.length + 1}>
+              GAME {playerHistory.length + 1} : {showTimeScore(score)}
+            </div>
           </div>
         </div>
         <div className='game'>
           <div className='text-center'>
-            <div className='timer'>{timerValue}</div>
-            <h1 className='window text-center'>{word}</h1>
+            <div className='timer-container'>
+              <div className='timer'>{timerValue}</div>
+              <img src='timer.svg' alt='...' className='Icon-timer' />
+            </div>
+            <h1 className='window text-center'>
+              {wordSpan.map((item, index) => (
+                <span style={{ color: item[1] }} key={index}>
+                  {item[0]}
+                </span>
+              ))}
+            </h1>
             <input
               onChange={onInputChange}
               className='Rectangle-9'
@@ -85,6 +133,7 @@ const GameStart = () => {
           </div>
         </div>
       </div>
+      <Footer isGameRunning={true} handleStop={stopGame} />
     </div>
   );
 };

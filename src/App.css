@@ -1,3 +1,4 @@
+@import './/assets//fonts//style.css';
 .d-flex {
   display: flex;
 }
@@ -30,6 +31,7 @@
 .user-info {
   /* width: 250px; */
   margin: 2rem;
+  font-family: 'Bream Catcher Regular';
 }
 
 .score {
@@ -50,12 +52,26 @@
   justify-content: center;
   align-items: center;
 }
-
+.timer-container {
+  position: relative;
+  margin: auto;
+  height: 180px;
+  width: 180px;
+  text-align: center;
+}
 .timer {
   /* width: 220px; */
   /* height: 220px; */
   object-fit: contain;
   font-size: 50px;
+  padding: 50px;
+}
+.Icon-timer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 175px;
+  height: 175px;
 }
 
 .window {
@@ -73,7 +89,7 @@
 }
 
 .fast-fingers {
-  font-family: LaserCorpsGradient;
+  font-family: 'Laser Corps Gradient Regular';
   font-size: 2rem;
   font-weight: normal;
   font-stretch: normal;
@@ -81,10 +97,9 @@
   line-height: 1.2;
   letter-spacing: normal;
   /* text-align: right; */
-  margin: 2rem;
+  margin: 2rem 2rem 2rem -2rem;
 }
 .the-ultimate-typing-game {
-  width: 283px;
   height: 26px;
   font-family: Gotham;
   font-size: 26px;
@@ -96,6 +111,16 @@
   /* text-align: left; */
   color: var(--light-red);
 }
+.the-ultimate-typing-game::before,
+.the-ultimate-typing-game::after {
+  display: inline-block;
+  content: '';
+  border-top: 0.1rem solid #ff5155;
+  width: 125.6px;
+  margin: 0 1rem;
+  transform: translateY(-10px);
+}
+
 .Rectangle-2 {
   width: 622px;
   height: 90px;
@@ -173,12 +198,15 @@
   border-radius: 15px;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   background-color: #ffffff;
+  margin: 10px;
 }
-
+.Rectangle-9::placeholder {
+  color: #032228;
+}
 .Rectangle-10 {
   width: 250px;
   height: 100%;
-  min-height: 70vh;
+  min-height: 60vh;
   border-radius: 15px;
   border: solid 3px red;
   text-align: center;
@@ -194,6 +222,8 @@
   font-style: normal;
   line-height: 1.2;
   letter-spacing: normal;
+  text-transform: uppercase;
+  margin: 18px;
   /* text-align: left; */
   color: var(--light-red);
 }
@@ -217,6 +247,10 @@
   border-radius: 15px;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   border: solid 1px #ffffff;
+  background-color: transparent;
+  color: #97a5a7;
+  font-size: 35px;
+  margin: 10px;
 }
 
 .PLAY-AGAIN {
@@ -299,4 +333,42 @@ a {
 
 .ml-2 {
   margin-left: 20px;
+}
+.footer {
+  display: flex;
+  position: absolute;
+  bottom: 1%;
+  width: calc(100vw - 8rem);
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  font-family: Gotham;
+  font-size: 47px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  justify-content: space-between;
+  padding: 0rem 3rem;
+  place-items: center;
+  text-transform: uppercase;
+}
+.Icon-awesome-home {
+  width: 70px;
+  height: 66.1px;
+  object-fit: contain;
+}
+.stop-button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.footer-buttons {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.footer-buttons:hover {
+  transform: scale(1.1);
+}
+.footer-buttons:active {
+  transform: translateY(-0.1rem);
 }

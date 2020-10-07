@@ -1,10 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({ isGameRunning, handleStop }) => {
   return (
-    <div>
-      <button>Action</button>
-      <div>Home</div>
+    <div className='footer'>
+      <div className='footer-buttons' onClick={handleStop}>
+        {isGameRunning ? (
+          <div className='stop-button'>
+            <img
+              src='metro-cross.svg'
+              alt='Home'
+              className='Icon-awesome-home'
+            />
+            Stop Game
+          </div>
+        ) : (
+          <Link to='/' className='footer-buttons'>
+            Quit
+          </Link>
+        )}
+      </div>
+      <Link to='/' className='footer-buttons'>
+        <img src='home.svg' alt='Home' className='Icon-awesome-home' />
+      </Link>
     </div>
   );
 };

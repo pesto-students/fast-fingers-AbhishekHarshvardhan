@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import Footer from '../Footer';
 
 import Header from '../Header';
 import UserInfo from '../UserInfo';
+import showTimeScore from '../utils/showTimeScore';
 
-const GameEnd = ({ score }) => {
+const GameEnd = ({ getPlayerScores }) => {
+  const [isNewScore, setIsNewScore] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
@@ -17,27 +20,30 @@ const GameEnd = ({ score }) => {
   if (!history.location.state) {
     return null;
   }
-
+  const { userName, gameNo, score, level } = history.location.state;
+  const playerHistory = getPlayerScores();
+  for (const { score: itemValue } of playerHistory) {
+    if (score < itemValue && isNewScore) {
+      setIsNewScore(false);
+    }
+  }
   return (
     <div>
       <div className='d-flex w-100'>
-        <UserInfo
-          userName={history.location.state.userName}
-          level={history.location.state.level}
-        />
-        <Header />
+        <UserInfo userName={userName} level={level} />
+        <Header textPlacement='right' />
       </div>
 
       <div className='d-flex w-100'>
         <div className='game'>
           <div className='text-center'>
-            <div className='SCORE-GAME-5'>Score: Game 1</div>
-            <div className='time text-center mt-1'>
-              {history.location.state.score}
-            </div>
-            <div className='New-High-Score text-center mt-1 '>
-              New high score
-            </div>
+            <div className='SCORE-GAME-5'>Score: Game {gameNo}</div>
+            <div className='time text-center mt-1'>{showTimeScore(score)}</div>
+            {isNewScore ? (
+              <div className='New-High-Score text-center mt-1 '>
+                New high score
+              </div>
+            ) : null}
             <div className='PLAY-AGAIN mt-1 w-100'>
               <Link to='/game'>
                 <img src='reload.svg' alt='... ' className='Icon-open-reload' />
@@ -47,6 +53,7 @@ const GameEnd = ({ score }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

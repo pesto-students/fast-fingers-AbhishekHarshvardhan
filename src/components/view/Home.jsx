@@ -21,7 +21,6 @@ const Home = () => {
   const onLevelChange = (e) => {
     setLevel(e.currentTarget.value);
   };
-
   const onFormSubmit = (e) => {
     e.preventDefault();
     history.push({
@@ -34,7 +33,7 @@ const Home = () => {
     <div className='d-flex flex-center flex-col h-100'>
       <div className='brand-logo'></div>
       <div className='d-flex flex-col text-center'>
-        <div className='fast-fingers'>Fast finger</div>
+        <div className='fast-fingers'>Fast fingers</div>
         <div className='the-ultimate-typing-game'>The ultimate typing game</div>
       </div>
       <form className='d-flex flex-col' onSubmit={onFormSubmit}>
