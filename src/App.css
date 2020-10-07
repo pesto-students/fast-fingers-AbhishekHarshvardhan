@@ -28,12 +28,12 @@
 }
 
 .user-info {
-  width: 250px;
+  /* width: 250px; */
   margin: 2rem;
 }
 
 .score {
-  margin: 2rem;
+  margin-left: 2rem;
 }
 
 .w-100 {
@@ -52,9 +52,10 @@
 }
 
 .timer {
-  width: 257.1px;
-  height: 257.1px;
+  /* width: 220px; */
+  /* height: 220px; */
   object-fit: contain;
+  font-size: 50px;
 }
 
 .window {
@@ -79,8 +80,58 @@
   font-style: normal;
   line-height: 1.2;
   letter-spacing: normal;
-  text-align: right;
+  /* text-align: right; */
   margin: 2rem;
+}
+.the-ultimate-typing-game {
+  width: 283px;
+  height: 26px;
+  font-family: Gotham;
+  font-size: 26px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  /* text-align: left; */
+  color: var(--light-red);
+}
+.Rectangle-2 {
+  width: 622px;
+  height: 90px;
+  opacity: 0.59;
+  border-radius: 15px;
+  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
+  background-color: #ffffff;
+}
+
+.difficulty-level {
+  /* width: 318px; */
+  height: 35px;
+  font-family: Breamcatcher;
+  font-size: 35px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  /* text-align: left; */
+  color: #97a5a7;
+}
+
+.start-game {
+  width: 307px;
+  height: 48px;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  font-family: Gotham;
+  font-size: 48px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  /* text-align: left; */
+  color: var(--light-red);
 }
 
 .player_name_777 {
@@ -95,6 +146,8 @@
   letter-spacing: normal;
   text-align: left;
   color: var(--light-red);
+  margin-top: 10px;
+  text-transform: uppercase;
 }
 
 .LEVEL-mEDIUM {
@@ -113,8 +166,10 @@
 
 .Rectangle-9 {
   width: 622px;
-  height: 90px;
+  /* height: 70px; */
   opacity: 0.59;
+  font-size: 40px;
+  padding: 10px;
   border-radius: 15px;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   background-color: #ffffff;
@@ -123,7 +178,7 @@
 .Rectangle-10 {
   width: 250px;
   height: 100%;
-  min-height: 75vh;
+  min-height: 70vh;
   border-radius: 15px;
   border: solid 3px red;
   text-align: center;
@@ -155,4 +210,93 @@
   letter-spacing: normal;
   /* text-align: left; */
   color: #ffffff;
+}
+.Rectangle-5 {
+  /* width: 622px; */
+  height: 60px;
+  border-radius: 15px;
+  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
+  border: solid 1px #ffffff;
+}
+
+.PLAY-AGAIN {
+  /* width: 313px; */
+  height: 54px;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  font-family: Gotham;
+  font-size: 54px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  /* text-align: left; */
+  color: var(--light-red);
+  background-color: transparent;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: red;
+}
+
+.Icon-open-reload {
+  width: 50px;
+  height: 45px;
+  object-fit: contain;
+  background-color: var(--light-red);
+}
+
+.SCORE-GAME-5 {
+  width: 572px;
+  height: 70px;
+  font-family: Gotham;
+  font-size: 70px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.time {
+  /* width: 230px; */
+  height: 118px;
+  font-family: Gotham;
+  font-size: 118px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.New-High-Score {
+  /* width: 383px; */
+  /* height: 53px; */
+  font-family: Gotham;
+  font-size: 53px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.mt-1 {
+  margin-top: 20px;
+}
+
+.info {
+  align-items: baseline;
+  justify-content: baseline;
+}
+
+.ml-2 {
+  margin-left: 20px;
 }

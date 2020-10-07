@@ -2,7 +2,7 @@ import React from 'react';
 
 const Select = ({ data, onChange, ...rest }) => {
   return (
-    <select onChange={onChange} {...rest}>
+    <select className='Rectangle-5' onChange={onChange} {...rest}>
       {data.map((d) => (
         <option key={d.value} value={d.value}>
           {d.name}

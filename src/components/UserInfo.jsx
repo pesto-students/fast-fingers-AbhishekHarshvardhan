@@ -1,13 +1,13 @@
 import React from 'react';
 import Info from './Info';
-const UserInfo = () => {
+const UserInfo = ({ userName, level }) => {
   return (
     <div className='user-info d-flex flex-col'>
       <div>
-        <Info icon='user' value='player name' />
+        <Info icon='user' value={userName} />
       </div>
       <div>
-        <Info icon='game' value='level' />
+        <Info icon='game' value={'LEVEL : ' + level} />
       </div>
     </div>
   );

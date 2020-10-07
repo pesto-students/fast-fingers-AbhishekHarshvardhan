@@ -9,7 +9,7 @@ const Home = () => {
   const data = [
     { name: 'EASY', value: 'easy' },
     { name: 'MEDIUM', value: 'medium' },
-    { name: 'HARD', value: 'Hard' },
+    { name: 'HARD', value: 'hard' },
   ];
 
   const [userName, setUserName] = useState('');
@@ -31,16 +31,25 @@ const Home = () => {
   };
 
   return (
-    <div className='d-flex flex-center flex-col h-100 mn-100'>
+    <div className='d-flex flex-center flex-col h-100'>
       <div className='brand-logo'></div>
       <div className='d-flex flex-col text-center'>
-        <div>Fast finger</div>
-        <div>The ultimate typing game</div>
+        <div className='fast-fingers'>Fast finger</div>
+        <div className='the-ultimate-typing-game'>The ultimate typing game</div>
       </div>
       <form className='d-flex flex-col' onSubmit={onFormSubmit}>
-        <Input value={userName} onChange={onUserNameChange} type='text' />
+        <Input
+          required
+          value={userName}
+          onChange={onUserNameChange}
+          type='text'
+          placeholder='TYPE YOUR NAME'
+        />
         <Select onChange={onLevelChange} value={level} data={data} />
-        <button>START GAME</button>
+        <button className='PLAY-AGAIN mt-1 w-100'>
+          <img src='reload.svg' alt='... ' className='Icon-open-reload' />
+          &nbsp;START GAME
+        </button>
       </form>
     </div>
   );
