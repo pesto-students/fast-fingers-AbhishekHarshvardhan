@@ -46,7 +46,7 @@ const Home = () => {
         />
         <Select onChange={onLevelChange} value={level} data={data} />
         <button className='PLAY-AGAIN mt-1 w-100'>
-          <img src='reload.svg' alt='... ' className='Icon-open-reload' />
+          <img src='play.svg' alt='... ' className='Icon-open-reload' />
           &nbsp;START GAME
         </button>
       </form>
