@@ -106,16 +106,21 @@
   user-select: none;
 }
 
+.m-header {
+  margin-right: 2rem;
+  margin-top: 2rem;
+}
+
 .fast-fingers {
   font-family: 'Laser Corps Gradient Regular';
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.2;
   letter-spacing: normal;
   /* text-align: right; */
-  margin: 3rem 8rem 0rem 0rem;
+  /* margin: 3rem 0 0rem 0rem; */
 }
 .the-ultimate-typing-game {
   height: 26px;
