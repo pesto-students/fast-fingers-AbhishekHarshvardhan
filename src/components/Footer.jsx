@@ -15,7 +15,7 @@ const Footer = ({ isGameRunning, handleStop }) => {
             Stop Game
           </div>
         ) : (
-          <Link to='/' className='footer-buttons'>
+          <Link to='/' className='footer-buttons' onClick={clearPlayHistory}>
             Quit
           </Link>
         )}
@@ -26,5 +26,7 @@ const Footer = ({ isGameRunning, handleStop }) => {
     </div>
   );
 };
-
+const clearPlayHistory = () => {
+  localStorage.clear();
+};
 export default Footer;

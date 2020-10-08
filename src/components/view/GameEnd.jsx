@@ -45,7 +45,7 @@ const GameEnd = ({ getPlayerScores }) => {
               </div>
             ) : null}
             <div className='PLAY-AGAIN mt-1 w-100'>
-              <Link to='/game'>
+              <Link to={{ pathname: '/game', state: { level, userName } }}>
                 <img src='reload.svg' alt='... ' className='Icon-open-reload' />
                 &nbsp;Play again
               </Link>

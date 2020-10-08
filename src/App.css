@@ -36,6 +36,7 @@
 
 .score {
   margin-left: 2rem;
+  position: relative;
 }
 
 .w-100 {
@@ -43,40 +44,56 @@
 }
 
 .game {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  margin: 0 auto;
 }
 .timer-container {
   position: relative;
   margin: auto;
-  height: 180px;
-  width: 180px;
+  height: 182px;
+  width: 182px;
   text-align: center;
 }
 .timer {
   /* width: 220px; */
   /* height: 220px; */
   object-fit: contain;
-  font-size: 50px;
-  padding: 50px;
+  font-size: 57px;
+  padding: 57px;
+  color: #ffffff;
 }
 .Icon-timer {
   position: absolute;
   top: 0;
   right: 0;
-  width: 175px;
-  height: 175px;
+  width: 180px;
+  height: 180px;
+  transform: rotateX(180deg) rotateY(-180deg) rotateZ(90deg);
+}
+.Icon-timer circle {
+  stroke-dasharray: 764px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 16px;
+  stroke: #ff5155;
+  fill: none;
+  animation: inherit;
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 764px;
+  }
 }
 
 .window {
   width: 100%;
-  height: 92px;
+  height: 62px;
   text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
   font-family: Gotham;
   font-size: 92px;
@@ -86,6 +103,7 @@
   line-height: 1.2;
   letter-spacing: normal;
   color: #ffffff;
+  user-select: none;
 }
 
 .fast-fingers {
@@ -97,7 +115,7 @@
   line-height: 1.2;
   letter-spacing: normal;
   /* text-align: right; */
-  margin: 2rem 2rem 2rem -2rem;
+  margin: 3rem 8rem 0rem 0rem;
 }
 .the-ultimate-typing-game {
   height: 26px;
@@ -204,12 +222,13 @@
   color: #032228;
 }
 .Rectangle-10 {
-  width: 250px;
-  height: 100%;
-  min-height: 60vh;
+  width: 268px;
+  height: 55vh;
+  max-height: 60vh;
   border-radius: 15px;
   border: solid 3px red;
   text-align: center;
+  overflow: auto;
 }
 
 .SCORE-BOARD {
@@ -238,8 +257,9 @@
   font-style: normal;
   line-height: 1.2;
   letter-spacing: normal;
-  /* text-align: left; */
   color: #ffffff;
+  margin: auto;
+  padding: 5px;
 }
 .Rectangle-5 {
   /* width: 622px; */
@@ -336,7 +356,7 @@ a {
 }
 .footer {
   display: flex;
-  position: absolute;
+  position: relative;
   bottom: 1%;
   width: calc(100vw - 8rem);
   text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
@@ -371,4 +391,12 @@ a {
 }
 .footer-buttons:active {
   transform: translateY(-0.1rem);
+}
+@media only screen and (min-width: 560px) {
+  .footer {
+    position: absolute;
+  }
+  .score {
+    position: absolute;
+  }
 }

@@ -5,6 +5,7 @@ import UserInfo from '../UserInfo';
 import allWords from '../../data/dictionary.json';
 import Footer from '../Footer';
 import showTimeScore from '../utils/showTimeScore';
+import { ReactComponent as Timer } from '../../assets/timer.svg';
 
 const DIFFICULTY_LEVEL = {
   easy: 1,
@@ -18,6 +19,7 @@ const GameStart = ({ getPlayerScores }) => {
   const [word, setWord] = useState('');
   const [wordSpan, setWordSpan] = useState([]);
   const [timerValue, setTimerValue] = useState(null);
+  const [finalTime, setFinalTime] = useState(0);
   const [score, setScore] = useState(0);
   const playerHistory = getPlayerScores();
   const setNewWord = () => {
@@ -30,6 +32,7 @@ const GameStart = ({ getPlayerScores }) => {
     setWord(word);
     setWordSpan(wordSpan);
     setTimerValue(timer > 2 ? timer.toFixed(0) : 2);
+    setFinalTime(timer > 2 ? timer.toFixed(0) : 2);
   };
 
   useEffect(() => {
@@ -116,7 +119,15 @@ const GameStart = ({ getPlayerScores }) => {
           <div className='text-center'>
             <div className='timer-container'>
               <div className='timer'>{timerValue}</div>
-              <img src='timer.svg' alt='...' className='Icon-timer' />
+              <Timer
+                className='Icon-timer'
+                style={{
+                  animation:
+                    timerValue === finalTime
+                      ? null
+                      : `countdown ${finalTime - 1}s linear forwards`,
+                }}
+              />
             </div>
             <h1 className='window text-center'>
               {wordSpan.map((item, index) => (
